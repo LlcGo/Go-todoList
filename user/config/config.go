@@ -1,11 +1,11 @@
-package main
+package config
 
 import (
 	"github.com/spf13/viper"
 	"os"
 )
 
-func InitDB() {
+func InitConfig() {
 	workDir, _ := os.Getwd() // 工作目录路径
 	viper.SetConfigName("config")
 	viper.SetConfigType("yml")
