@@ -5,6 +5,6 @@ option go_package="/internal/logic;logic";
 
 message UserModel {
   uint32  UserID = 1;
-  uint32  UserName = 2;
-  uint32  NickName = 3;
+  string  UserName = 2;
+  string  NickName = 3;
 }

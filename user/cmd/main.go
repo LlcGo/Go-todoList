@@ -1,11 +1,18 @@
 package main
 
 import (
-	"user/config"
-	"user/internal/repository"
+	"user/internal/handler"
+	"user/internal/logic"
 )
 
 func main() {
-	config.InitConfig()
-	repository.InitDB()
+	//config.InitConfig()
+	//repository.InitDB()
+	service := handler.UserService{}
+	service.UserLogin(nil, &logic.UserRequest{
+		NickName:        "lc6",
+		UserName:        "lc",
+		Password:        "123456",
+		PasswordConfirm: "123456",
+	})
 }

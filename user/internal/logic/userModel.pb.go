@@ -24,8 +24,8 @@ const (
 type UserModel struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserID        uint32                 `protobuf:"varint,1,opt,name=UserID,proto3" json:"UserID,omitempty"`
-	UserName      uint32                 `protobuf:"varint,2,opt,name=UserName,proto3" json:"UserName,omitempty"`
-	NickName      uint32                 `protobuf:"varint,3,opt,name=NickName,proto3" json:"NickName,omitempty"`
+	UserName      string                 `protobuf:"bytes,2,opt,name=UserName,proto3" json:"UserName,omitempty"`
+	NickName      string                 `protobuf:"bytes,3,opt,name=NickName,proto3" json:"NickName,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -67,18 +67,18 @@ func (x *UserModel) GetUserID() uint32 {
 	return 0
 }
 
-func (x *UserModel) GetUserName() uint32 {
+func (x *UserModel) GetUserName() string {
 	if x != nil {
 		return x.UserName
 	}
-	return 0
+	return ""
 }
 
-func (x *UserModel) GetNickName() uint32 {
+func (x *UserModel) GetNickName() string {
 	if x != nil {
 		return x.NickName
 	}
-	return 0
+	return ""
 }
 
 var File_userModel_proto protoreflect.FileDescriptor
@@ -88,8 +88,8 @@ const file_userModel_proto_rawDesc = "" +
 	"\x0fuserModel.proto\"[\n" +
 	"\tUserModel\x12\x16\n" +
 	"\x06UserID\x18\x01 \x01(\rR\x06UserID\x12\x1a\n" +
-	"\bUserName\x18\x02 \x01(\rR\bUserName\x12\x1a\n" +
-	"\bNickName\x18\x03 \x01(\rR\bNickNameB\x17Z\x15/internal/logic;logicb\x06proto3"
+	"\bUserName\x18\x02 \x01(\tR\bUserName\x12\x1a\n" +
+	"\bNickName\x18\x03 \x01(\tR\bNickNameB\x17Z\x15/internal/logic;logicb\x06proto3"
 
 var (
 	file_userModel_proto_rawDescOnce sync.Once
