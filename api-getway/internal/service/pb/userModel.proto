@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+// 生成go文件在哪个目录包下, .代表当前目录生成, service代表生成go文件的包名是service
+option go_package="/internal/logic;logic";
+
+message UserModel {
+  uint32  UserID = 1;
+  string  UserName = 2;
+  string  NickName = 3;
+}
