@@ -2,6 +2,7 @@ package repository
 
 import (
 	"github.com/gin-gonic/gin"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -20,7 +21,7 @@ func InitDB() {
 	username := viper.GetString("mysql.username")
 	password := viper.GetString("mysql.password")
 	charset := viper.GetString("mysql.charset")
-	dsn := strings.Join([]string{username, ":", password, "@tcp(", host, ":", port, ")/", database, "?charset=", charset + "&parseTime=true"}, "")
+	dsn := strings.Join([]string{username, ":", password, "@tcp(", host, ":", port, ")/", database, "?charset=", charset + "&parseTime=true&loc=Local&timeout=10s"}, "")
 	err := BuildDatabase(dsn)
 	if err != nil {
 		panic(err)
@@ -36,7 +37,7 @@ func BuildDatabase(dsn string) error {
 	}
 
 	db, err := gorm.Open(mysql.New(mysql.Config{
-		DriverName:                dsn,
+		DSN:                       dsn,
 		DefaultStringSize:         256,
 		DisableDatetimePrecision:  true,  // 禁用用datetime的精度，mysql5.6之前数据不支持
 		DontSupportRenameIndex:    true,  // 重命名索引方式采用删除后创建 mysql5.7 之前不支持
