@@ -22,9 +22,10 @@ func Cors() gin.HandlerFunc {
 			headerStr = "access-control-allow-origin, access-control-allow-headers"
 		}
 		if origin != "" {
-			c.Writer.Header().Set("Access-Control-Allow-Origin", "*") //允许所有来源 (*)
+			//允许所有来源 (*)
 			c.Header("Access-Control-Allow-Origin", "*")
-			c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, UPDATE") //允许多种请求方式
+			//允许多种请求方式
+			c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, UPDATE")
 			// 请求头字段列表
 			// Origin - 指示请求的来源（协议、域名和端口）。
 			// X-Requested-With - 通常用于标识 AJAX 请求，常见的值是 XMLHttpRequest。
